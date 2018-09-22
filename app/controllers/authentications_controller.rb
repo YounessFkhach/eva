@@ -1,11 +1,9 @@
 class AuthenticationsController < ApplicationController
 
   def call
-    user = UserFinderService.new(params[:method]).call(permited_params)
+    @user = UserFinderService.new(params[:method]).call(permited_params)
 
-    hash = JwtService.new(user).call
-
-    render json: hash
+    @hash = JwtService.new(@user).call
   end
 
   def permited_params

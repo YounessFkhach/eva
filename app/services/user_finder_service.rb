@@ -31,7 +31,7 @@ class UserFinderService
   end
 
   def validate_method!
-    raise Errors::InvalidMethodName unless supported_methods.include?(method.to_sym)
+    raise Errors::InvalidMethodName unless supported_methods.include?(method&.to_sym)
   end
 
   def supported_methods
